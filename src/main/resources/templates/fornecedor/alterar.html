@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/3.4.1/css/bootstrap.min.css} "/>
+  </head>
+  <body>
+    <div class="container">
+      <div class="col-md-6">
+        <form action="#" th:action="@{/fornecedor/{id}(id=${fornecedor.id})}" th:object="${fornecedor}" method="POST">
+            <div class="form-group">
+                  <label for="nome">Nome</label>
+                  <input class="form-control"  type="text" th:field="*{nome}"  id="nome" placeholder="Digite o nome">
+                  <label for="nome">Endereço</label>
+                  <input class="form-control"  type="text" th:field="*{endereco}"  id="nome" placeholder="Digite o endereço">
+                  <label for="nome">Número</label>
+                  <input class="form-control"  type="text" th:field="*{numero}"  id="nome" placeholder="Digite o número">
+                  <label for="nome">Cidade</label>
+                  <input class="form-control"  type="text" th:field="*{cidade}"  id="nome" placeholder="Digite a cidade">
+                  <label for="nome">Estado</label>
+                  </br>
+                  <select class="form-control" id="estado" th:field="*{estado}" name="estado" required>    
+				        <option value=""> </option>
+				        <option th:each="estado : ${estadosItens}" th:value="${estado.id}" th:utext="${estado.nome}"/>
+				  </select>
+             </div>
+             <button class="btn btn-warning" type="submit">Atualizar</button>
+             <a class="btn btn-success" href="/fornecedores">Voltar</a>
+             <input type="hidden" th:field="*{dtCriacao}" />
+             <input type="hidden" th:field="*{dtAlteracao}" />
+        </form>
+      </div>
+    </div>
+    <hr />
+    <script th:src="@{/webjars/jquery/3.6.0/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/3.4.1/js/bootstrap.min.js}"></script>
+  </body>
+</html>
